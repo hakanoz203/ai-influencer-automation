@@ -6,28 +6,4 @@ Key Features:
 
 * Consistent Character Creation: Integrates with ComfyUI and LoRA models(strict consistency provided by Ostris AI Toolkit in Docker) to maintain the influencer's persona's distinct features automated.
 
-* Automated Posting (not certain): Seamlessly schedules and posts generated images and videos directly to Social Media platforms.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Automated Posting (not certain): Seamlessly schedules and posts generated images and videos directly to Social Media platforms
