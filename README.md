@@ -10,5 +10,5 @@ Before running this workflow, ensure you have the following set up:
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone https://github.com/hakanoz203/ai-influencer-automation
+   cd ai-influencer-automation
