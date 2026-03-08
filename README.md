@@ -1,7 +1,5 @@
-babaporbabaprobaba prolar
-merhaba ben can # ai-influencer-automation
-31
-# Alperen Contribution
-asdadas
 
-alpego
+
+
+
+Hallo, Mein name ist Alperen Aydınlık.
