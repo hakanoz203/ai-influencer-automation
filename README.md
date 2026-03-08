@@ -1,1 +1,1 @@
-This is an ai-automation project.
+This is an ai-automated influencer project.
