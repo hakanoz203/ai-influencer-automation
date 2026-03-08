@@ -1,3 +1,5 @@
+# Alperen Publish
+
 Key Features:
 
 * Automated Trend Analysis: Gathers current trends of chosen niche (Google Alerts RSS Feed, Reddit API, Youtube Data API...) and generate data from AI agents to inform content direction.
