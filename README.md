@@ -1,12 +1,15 @@
 ## Can Publish
-## 📋 Prerequisites
+## Prerequisites
 Before running this workflow, ensure you have the following set up:
 * An active n8n instance (local or cloud).
-* ComfyUI installed with necessary custom nodes.
-* The specific Monk LoRA model placed in your ComfyUI `models/loras` directory.
-* Active API credentials for Instagram.
+* ComfyUI installed with necessary custom nodes,WAN,QWEN and flux models.
+*Before starting this automation, you must prepare your character's LoRA model by following these steps:
+1. Generate your character dataset using the Character Creator workflow in ComfyUI.
+2. Train a LoRA model with this dataset using the Ostris AI Toolkit via RunPod Docker.
+3. Move the resulting trained model into your `ComfyUI/models/loras` directory.
 
-## 🚀 Setup & Installation
+
+## Setup & Installation
 
 1. **Clone the Repository**
    ```bash
