@@ -380,7 +380,7 @@ try {
 
 ---
 
-## 11. ÇALIŞMA KURALLARI
+## 11. ÇALIŞMA KURALLARI (Claude için Talimatlar)
 
 Bu projede Claude olarak şu kurallara uy:
 
