@@ -41,3 +41,9 @@ Before running this workflow, ensure you have the following set up:
    ```bash
    git clone https://github.com/hakanoz203/ai-influencer-automation
    cd ai-influencer-automation
+
+   ## Version 1.0
+   # AI Influencer Content Factory
+
+"Harsh Relationship Analyst" nişi için uçtan uca otonom içerik üretim otomasyonu. n8n + Reddit/Apify + Notion + Gemini/GPT-4o.
+
