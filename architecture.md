@@ -25,7 +25,7 @@ Bu sistem, **"Acımasız İlişki Analisti"** nişinde faaliyet gösteren bir AI
 | **Veri Kaynağı 2** | Apify — X/Twitter Scraper |
 | **Hafıza & Veritabanı** | Notion (Sistem Belleği + İçerik Takvimi) |
 | **Analiz/Filtreleme LLM** | Gemini 1.5 Flash (hız ve maliyet dengesi) |
-| **Persona/Yazım LLM** | Claude 3.5 Sonnet veya GPT-4o |
+| **Persona/Yazım LLM** | GPT-4o |
 | **İletişim & Onay** | Telegram Bot API |
 
 ---
@@ -202,7 +202,7 @@ KAYNAK: {{ $json.source }}
 ---
 
 ### AJAN 2: PERSONA MOTORU
-**Model:** Claude 3.5 Sonnet  
+**Model:** Chatgpt-4o  
 **Amaç:** Ajan 1'in analizini, karakterin sesiyle ham senaryoya dönüştürmek.
 
 #### Karakter Profili
@@ -246,7 +246,7 @@ Sonu bir gerçekle tokat gibi bitirmelidir.
 ---
 
 ### AJAN 3: PRODÜKTÖR
-**Model:** Claude 3.5 Sonnet  
+**Model:** Chatgpt-4o 
 **Amaç:** Ham senaryoyu algoritma dostu, platforma hazır bir pakete dönüştürmek.
 
 #### System Prompt
