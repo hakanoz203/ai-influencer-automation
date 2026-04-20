@@ -1,0 +1,88 @@
+{
+  "name": "[FAZ5] Notion Polling.",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7cd39824-8bc7-46ee-97be-7955110f75ba",
+      "name": "[FAZ5] 30dk Polling"
+    },
+    {
+      "parameters": {
+        "jsCode": "const NOTION_TOKEN = 'NOTION_API_KEY';\nconst DB_ID = 'ae47436bd3d249e0b51fff48049a77a6';\n\nconst data = await this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://api.notion.com/v1/databases/${DB_ID}/query`,\n  headers: {\n    'Authorization': `Bearer ${NOTION_TOKEN}`,\n    'Notion-Version': '2022-06-28',\n    'Content-Type': 'application/json'\n  },\n  body: {\n    filter: {\n      property: 'Durum',\n      status: { equals: '🟢 Üretime Hazır' }\n    },\n    page_size: 20\n  },\n  json: true\n});\n\nreturn (data.results || []).map(p => ({\n  json: {\n    page_id: p.id,\n    olay: p.properties['Olay']?.title?.[0]?.plain_text || '',\n    source_id: p.properties['Source_ID']?.rich_text?.[0]?.plain_text || '',\n    url: p.properties['Trend URL']?.url || ''\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "741fdf8a-1cd6-4bd4-9054-be951e766a8b",
+      "name": "[FAZ5] Query Üretime Hazır"
+    },
+    {
+      "parameters": {
+        "jsCode": "const NOTION_TOKEN = 'NOTION_API_KEY';\n\nfor (const item of items) {\n  await this.helpers.httpRequest({\n    method: 'PATCH',\n    url: `https://api.notion.com/v1/pages/${item.json.page_id}`,\n    headers: {\n      'Authorization': `Bearer ${NOTION_TOKEN}`,\n      'Notion-Version': '2022-06-28',\n      'Content-Type': 'application/json'\n    },\n    body: {\n      properties: {\n        'Durum': { status: { name: '✅ Paylaşıldı' } }\n      }\n    },\n    json: true\n  });\n  // Rate limit\n  await new Promise(r => setTimeout(r, 1000));\n}\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "f4e82333-4c14-428e-8f80-dcf7b41c7d31",
+      "name": "[FAZ5] Mark Paylaşıldı"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "[FAZ5] 30dk Polling": {
+      "main": [
+        [
+          {
+            "node": "[FAZ5] Query Üretime Hazır",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "[FAZ5] Query Üretime Hazır": {
+      "main": [
+        [
+          {
+            "node": "[FAZ5] Mark Paylaşıldı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "b900e7cb-54ad-4995-b1a0-7eff129315de",
+  "meta": {
+    "instanceId": "bcb72e030ac62626a86fecc8ea70883c5536a33a29144b86de732ea83ce76ccf"
+  },
+  "id": "NuQvspyrN3criT6IdSMDy",
+  "tags": []
+}
