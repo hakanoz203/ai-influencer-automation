@@ -1,0 +1,397 @@
+{
+  "name": "Video Generation",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -352,
+        0
+      ],
+      "id": "863f6dd6-2e3f-4271-8f50-5b26b9e7de1a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.heygen.com/v3/videos/{{ $node[\"HeyGen_Post\"].json.data.video_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "video_id",
+              "value": "={{ $json.data.video_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        816,
+        0
+      ],
+      "id": "7be71ed8-9486-4a9c-a639-0447470e2f07",
+      "name": "Get Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ToI4RnLrz5aFG3ei",
+          "name": "HeygenApi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        624,
+        0
+      ],
+      "id": "a4fccc1a-ec1b-4133-8935-b84f6748b1b4",
+      "name": "Wait",
+      "webhookId": "64f4c988-388b-40f4-ad13-43c467816b76"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2e2cebdd-6275-4478-abe1-456744c13dbe",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "a6fc8d8b-af3a-4393-8fc9-922bd6c8cd42",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        208
+      ],
+      "id": "dfed4d8b-4637-4405-9199-78a18c84aabd",
+      "name": "Wait1",
+      "webhookId": "e1354154-6a30-4358-9643-457099064a11"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.heygen.com/v3/videos",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"avatar\",\n  \"avatar_id\": \"{{ $json.active_look_id }}\",\n  \"resolution\": \"1080p\",\n  \"aspect_ratio\": \"9:16\",\n\"remove_background\": true,\n  \"background\": {\n    \"type\": \"image\",\n    \"url\": \"{{ $json.background_url }}\"\n  },\n  \"script\": \"{{ $json.kanca }}{{ $json.script }}\",\n  \"voice_id\": \"6a2854113dd94fdfaf1f8eb51ebf5872\",\n  \"voice_settings\": {\n    \"speed\": 1,\n    \"locale\": \"tr-TR\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        384,
+        0
+      ],
+      "id": "95430f7b-effb-459f-be5b-9bb6a084d5d5",
+      "name": "HeyGen_Post",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ToI4RnLrz5aFG3ei",
+          "name": "HeygenApi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendVideo",
+        "chatId": "971763329",
+        "binaryData": true,
+        "binaryPropertyName": "video_data",
+        "additionalFields": {
+          "caption": "={{ $node[\"Uretim_Paketi_Hazirla\"].json.kanca }}\n\n📌 Instagram/TikTok:\n{{ $node[\"Uretim_Paketi_Hazirla\"].json.caption_hashtags }}\n\n🐦 Twitter (X):\n{{ $node[\"Uretim_Paketi_Hazirla\"].json.twitter_postu }}"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1520,
+        -96
+      ],
+      "id": "3bc50f42-d31c-43e1-a3f5-095a34058c45",
+      "name": "Send a video",
+      "webhookId": "994f5b99-59d2-436f-8bc1-d3217dcb8272",
+      "credentials": {
+        "telegramApi": {
+          "id": "BhDa3wi07oQ54JnG",
+          "name": "AI_Influencer_Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "ae47436bd3d249e0b51fff48049a77a6",
+          "mode": "id"
+        },
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Durum|status",
+              "condition": "equals",
+              "statusValue": "🟢 Üretime Hazır"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        -128,
+        0
+      ],
+      "id": "e12c3f48-d85e-4505-a910-9661d518fdaa",
+      "name": "Notion_Hazir_Satirlar",
+      "credentials": {
+        "notionApi": {
+          "id": "ZVmMHFlTCVOLYDqO",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Gelen Veri Kontrolü\nif (items.length === 0) {\n  throw new Error(\"DİKKAT: Veritabanında 'Üretime Hazır' statüsünde hiçbir içerik bulunamadı!\");\n}\n\n// 2. Verileri Düzleştir\nconst allNotionRows = items.map(item => item.json);\n\n// 3. Notion Satırları Arasından Rastgele BİRİNİ Seç\nconst randomRowIndex = Math.floor(Math.random() * allNotionRows.length);\nconst selectedContent = allNotionRows[randomRowIndex];\n\n// 4. Cloudflare R2 Arka Plan Havuzu (Sabit Kalıyor)\nconst r2_backgrounds = [\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B1.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B2.jpeg\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B3.jpeg\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B4.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B5.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B6.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B7.jpeg\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B8.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B9.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B10.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B11.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B12.jpeg\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B13.jpeg\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B14.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B15.png\",\n  \"https://pub-7d03b84a5e2a429daee7ef27de4d76e5.r2.dev/B16.jpeg\"\n];\n\n// 5. HeyGen Avatar Look ID Havuzu (Senin Eklediğin 6 Görünüm)\nconst look_id_pool = [\n  \"55632904d62e419899ae64e4216fcd93\", // Örn: Takım elbiseli\n  \"a13be4e39fb946f78f02f6a83e2f478c\", // Örn: Günlük kıyafet\n  \"37c0be2c53bf4175b986a0aacd050655\", // Örn: Farklı açı\n  \"b9f575ab396541d1bd7fd657d59242e1\",\n  \"369bd754f70748d7bf540c9fa007786e\",\n  \"78739db5418e4e4eba5bdc770b219d11\"\n];\n\n// 6. Rastgele Seçimleri Yap\nconst selected_bg = r2_backgrounds[Math.floor(Math.random() * r2_backgrounds.length)];\nconst selected_look = look_id_pool[Math.floor(Math.random() * look_id_pool.length)];\n\n// 7. Nihai Paketi Döndür\nreturn {\n  notion_id: selectedContent.id, \n  script: selectedContent.property_senaryo, \n  kanca: selectedContent.property_video_kancas, \n  caption_hashtags: selectedContent.property_a_klama, \n  twitter_postu: selectedContent.property_twitter_postu,\n  background_url: selected_bg,\n  active_look_id: selected_look\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        112,
+        0
+      ],
+      "id": "ce65c72e-ca82-4e6d-961b-8b9a920bed88",
+      "name": "Uretim_Paketi_Hazirla"
+    },
+    {
+      "parameters": {
+        "url": "={{ $node[\"Get Video\"].json.data.video_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "video_data"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1232,
+        -96
+      ],
+      "id": "b33b5254-d22c-4e78-8698-b56701f4ce5b",
+      "name": "Videonun_Indirilmesi"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $node[\"Uretim_Paketi_Hazirla\"].json.notion_id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Durum|status",
+              "statusValue": "✅ Paylaşıldı"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1744,
+        -96
+      ],
+      "id": "155deb4a-2c1e-4226-872f-252859f51762",
+      "name": "Notion_Durum_Update",
+      "credentials": {
+        "notionApi": {
+          "id": "ZVmMHFlTCVOLYDqO",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Notion_Hazir_Satirlar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Video": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Videonun_Indirilmesi",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Get Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HeyGen_Post": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a video": {
+      "main": [
+        [
+          {
+            "node": "Notion_Durum_Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion_Hazir_Satirlar": {
+      "main": [
+        [
+          {
+            "node": "Uretim_Paketi_Hazirla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Uretim_Paketi_Hazirla": {
+      "main": [
+        [
+          {
+            "node": "HeyGen_Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Videonun_Indirilmesi": {
+      "main": [
+        [
+          {
+            "node": "Send a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "6c941b35-3a01-4905-bf8f-812fd459466c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bcb72e030ac62626a86fecc8ea70883c5536a33a29144b86de732ea83ce76ccf"
+  },
+  "id": "FL1w7qjqX1QrhABoF9Es-",
+  "tags": []
+}
