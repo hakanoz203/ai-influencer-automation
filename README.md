@@ -5,7 +5,7 @@ Project "Selinger" is a fully autonomous, almost zero-touch content generation a
 
 The system continuously monitors and analyzes Twitter Trending Posts, Competitor Youtube channels, generates highly engaging multimedia content(including instagram reels videos, X Posts), handles rate-limit exceptions without crashing, and chats followers about their relations ship issues on Instagram DM and drives organic traffic directly to an automated sales funnel (Instagram DM Automation) for a digital product (the GÖRÜLDÜ ATILMADI, TERK EDİLDİN e-book).
 
-##  System Architecture & Core Pipelines
+## System Architecture & Core Pipelines
 
 The ecosystem is not a linear script; it is a **fault-tolerant state machine** orchestrated via n8n, consisting of several interdependent pipelines.
 
