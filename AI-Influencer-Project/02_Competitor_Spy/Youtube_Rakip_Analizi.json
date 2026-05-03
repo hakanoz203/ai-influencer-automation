@@ -1,23 +1,6 @@
 {
-  "name": "5.Competitor Spy & Anti-Thesis (Keskin Nisanci)",
+  "name": "5.Competitor Spy & Anti-Thesis",
   "nodes": [
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {}
-          ]
-        }
-      },
-      "id": "7e019f43-fc7e-42ff-9dc9-51d056b149d1",
-      "name": "Schedule Trigger (02:00)",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        2448,
-        0
-      ]
-    },
     {
       "parameters": {
         "resource": "databasePage",
@@ -41,18 +24,18 @@
         },
         "options": {}
       },
-      "id": "21439297-7b0d-46be-b829-831cff9b62eb",
+      "id": "c7201c9c-b8ae-4326-b248-329c967a9023",
       "name": "Notion: Hedef Rakipler (Aktif)",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
       "position": [
-        2656,
-        0
+        32,
+        -272
       ],
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
     },
@@ -76,26 +59,26 @@
         },
         "options": {}
       },
-      "id": "d6de8b75-3dd8-42f3-b0eb-efcf1f2771ca",
+      "id": "87519838-5b2f-4af7-a541-90624d7455b5",
       "name": "Extract Channel_ID",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2944,
-        0
+        240,
+        -272
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "7aec09de-3bf5-406a-b3fa-e5bc8ce8c18e",
+      "id": "1328410a-8f35-4083-b015-7a768bac140d",
       "name": "Loop Over Channels",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3296,
-        16
+        480,
+        -256
       ]
     },
     {
@@ -130,19 +113,19 @@
             },
             {
               "name": "key",
-              "value": "GOOGLE_AI_STUDIO_API_KEY\n"
+              "value": "[GOOGLE_CLOUD_CONSOLE_PLATFORM_API_KEY]\n"
             }
           ]
         },
         "options": {}
       },
-      "id": "42301cb2-0224-4fba-ad27-0534cb95a8f0",
+      "id": "66e22590-3b83-4a1e-957e-cb0d305acd5d",
       "name": "YouTube: Son 24h Video Ara",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3536,
-        32
+        688,
+        -160
       ]
     },
     {
@@ -151,7 +134,8 @@
           "options": {
             "caseSensitive": true,
             "leftValue": "",
-            "typeValidation": "loose"
+            "typeValidation": "strict",
+            "version": 2
           },
           "conditions": [
             {
@@ -168,13 +152,13 @@
         },
         "options": {}
       },
-      "id": "dcf0dbf2-72f1-4531-8aae-3839567da168",
+      "id": "355d431c-c0e5-4e80-bfde-565ff73a3cc7",
       "name": "IF: Yeni Video Var Mi?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3792,
-        64
+        896,
+        -160
       ]
     },
     {
@@ -221,13 +205,13 @@
         },
         "options": {}
       },
-      "id": "22085d57-df88-4843-9e76-55f1677f6afc",
+      "id": "b0fbe7e0-93cc-4129-9b1e-925ee4d91f4a",
       "name": "Extract videoId",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4240,
-        176
+        1088,
+        -160
       ]
     },
     {
@@ -253,19 +237,19 @@
         },
         "options": {}
       },
-      "id": "8d6d8cf2-72bc-4216-861a-bd4fbd9e0f29",
+      "id": "60077f7a-a939-448f-9a5d-fb4abbf05493",
       "name": "Notion: Dedup Check (Source_ID)",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
       "position": [
-        4448,
-        176
+        1264,
+        -160
       ],
       "alwaysOutputData": true,
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
     },
@@ -294,13 +278,13 @@
         },
         "options": {}
       },
-      "id": "cdc92d7e-e3d1-4791-97e8-5329e3eebbfd",
+      "id": "ffcc9bc1-a430-45be-ad3a-83785cea98a6",
       "name": "IF: Yeni mi (Dedup)?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4656,
-        176
+        1456,
+        -160
       ]
     },
     {
@@ -324,7 +308,7 @@
           "parameters": [
             {
               "name": "x-api-key",
-              "value": "SUPADATA_API_KEY"
+              "value": "[SUPADATA_API_KEY]"
             }
           ]
         },
@@ -337,14 +321,15 @@
           }
         }
       },
-      "id": "f276286d-a363-4e6b-b600-be1a0e59de29",
+      "id": "f0660339-efa1-4157-9823-59c339477af8",
       "name": "Supadata: Transcript Çek",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2672,
-        816
-      ]
+        -160,
+        304
+      ],
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -352,7 +337,8 @@
           "options": {
             "caseSensitive": true,
             "leftValue": "",
-            "typeValidation": "loose"
+            "typeValidation": "strict",
+            "version": 2
           },
           "conditions": [
             {
@@ -370,26 +356,26 @@
         },
         "options": {}
       },
-      "id": "a40c8b1d-597f-4d6a-aba5-e1b2a4a99a33",
+      "id": "af592b62-6c1f-4bdc-a9b6-2a9569f79785",
       "name": "IF: Transkript Var Mi?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2896,
-        816
+        64,
+        272
       ]
     },
     {
       "parameters": {
         "jsCode": "// Transcript budama: etiket temizliği, intro/outro kırp, 2000 kelime sınırı\nconst raw = $input.first().json.content || $input.first().json.transcript || '';\nconst videoId = $('Extract videoId').item.json.videoId;\nconst videoTitle = $('Extract videoId').item.json.videoTitle;\nconst channelName = $('Extract videoId').item.json.Channel_Name;\n\n// 1) Otomatik etiketleri sil: [müzik], [alkış], [Music], [Applause], (music), vb.\nlet text = raw\n  .replace(/\\[[^\\]]{1,40}\\]/g, ' ')\n  .replace(/\\([^\\)]{1,40}\\)/g, ' ')\n  .replace(/\\s+/g, ' ')\n  .trim();\n\n// 2) Kelimelere böl\nlet words = text.split(/\\s+/).filter(Boolean);\nconst originalCount = words.length;\n\n// 3) Intro/outro kırpma: ilk 100 + son 100 kelimeyi at (çok kısa videoda atla)\nif (words.length > 300) {\n  words = words.slice(100, words.length - 100);\n}\n\n// 4) 2000 kelime sınırı: aşarsa ortadan kes (ilk 1000 + son 1000)\nif (words.length > 2000) {\n  const head = words.slice(0, 1000);\n  const tail = words.slice(words.length - 1000);\n  words = [...head, '...', ...tail];\n}\n\nconst cleaned = words.join(' ');\n\nreturn [{\n  json: {\n    videoId,\n    videoTitle,\n    channelName,\n    cleaned_transcript: cleaned,\n    word_count: words.length,\n    original_word_count: originalCount\n  }\n}];"
       },
-      "id": "0a59b2bc-2ff6-4a63-843d-1012501fda45",
+      "id": "4c4f7e50-5c79-485e-9535-735cc19b3c09",
       "name": "JS: Transcript Budama",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3120,
-        816
+        256,
+        304
       ]
     },
     {
@@ -401,7 +387,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer OPENAI_API_KEY"
+              "value": "Bearer [OPEN_AI_API_KEY]"
             },
             {
               "name": "Content-Type",
@@ -420,26 +406,26 @@
           }
         }
       },
-      "id": "79f0bcec-77bd-4045-8d61-3bebd5f80a7a",
+      "id": "b5418adc-33ec-4195-984e-b661c83d5c60",
       "name": "Ajan 1: Rakip Analisti (GPT-4o)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3344,
-        816
+        480,
+        304
       ]
     },
     {
       "parameters": {
         "jsCode": "// Agent 1 JSON çıktısını parse et ve transcript bilgilerini taşı\nconst resp = $input.first().json;\nconst raw = resp.choices?.[0]?.message?.content || '{}';\nlet parsed;\ntry {\n  parsed = JSON.parse(raw);\n} catch (e) {\n  throw new Error('Ajan 1 JSON parse hatası: ' + raw);\n}\n\nconst prev = $('JS: Transcript Budama').item.json;\n\nreturn [{\n  json: {\n    videoId: prev.videoId,\n    videoTitle: prev.videoTitle,\n    channelName: prev.channelName,\n    rakip_tezi: parsed.rakip_tezi || '',\n    toplumsal_itiraz_noktasi: parsed.toplumsal_itiraz_noktasi || ''\n  }\n}];"
       },
-      "id": "3eb35a2d-053c-4646-8949-a4d30ada58d4",
+      "id": "c3e21962-2ad8-4fd3-a683-b0372fc86821",
       "name": "Parse: Ajan 1 Çıktısı",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3552,
-        816
+        656,
+        288
       ]
     },
     {
@@ -451,7 +437,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer OPENAI_API_KEY"
+              "value": "Bearer [OPENAI_API_KEY]"
             },
             {
               "name": "Content-Type",
@@ -470,26 +456,26 @@
           }
         }
       },
-      "id": "e27e39cd-74f1-4d7b-91d9-a01d80e31628",
+      "id": "89c726de-8718-413b-882c-10a962c305be",
       "name": "Ajan 2: Persona Motoru (GPT-4o)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3776,
-        816
+        864,
+        288
       ]
     },
     {
       "parameters": {
         "jsCode": "// Agent 2 ham manifesto metnini al, önceki verileri taşı\nconst resp = $input.first().json;\nconst manifesto = resp.choices?.[0]?.message?.content?.trim() || '';\nif (!manifesto) {\n  throw new Error('Ajan 2 boş manifesto döndürdü');\n}\nconst prev = $('Parse: Ajan 1 Çıktısı').item.json;\n\nreturn [{\n  json: {\n    ...prev,\n    manifesto\n  }\n}];"
       },
-      "id": "97cf32e2-4afc-49bc-8e22-573667da1082",
+      "id": "897a8683-384d-4b99-9c9f-2f45b15a81b2",
       "name": "Parse: Ajan 2 Manifesto",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3920,
-        592
+        1056,
+        288
       ]
     },
     {
@@ -501,7 +487,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer OPENAI_API_KEY"
+              "value": "Bearer [OPENAI_API_KEY]"
             },
             {
               "name": "Content-Type",
@@ -511,7 +497,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"gpt-4o\",\n  \"temperature\": 0.7,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Bu manifestoyu TikTok/Shorts algoritmaları için kusursuz bir üretim paketine çevir. SADECE şu JSON şemasında Türkçe cevap ver: {\\\"video_hook\\\": string (ilk 3 saniye vurucu başlık), \\\"teleprompter_script\\\": string (kamera ve mimik komutları içeren akıcı senaryo), \\\"caption_hashtags\\\": string (açıklama ve hashtagler), \\\"visual_prompt\\\": string (bu konsepti yansıtacak Midjourney/Flux görsel üretim promptu, İngilizce olabilir)}. Açıklama ekleme.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": {{ JSON.stringify($json.manifesto) }}\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"model\": \"gpt-4o\",\n  \"temperature\": 0.8,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Sen kitlelerin inandığı o ucuz yalanlardan ve rakiplerin kopyala-yapıştır içeriklerinden midesi bulanan, acımasız ve sinik bir AI Influencer'sın. Üslubun alaycı, üstenci, soğuk ve tahammülsüzdür. İnsanların saçma varsayımlarını ve rakiplerin zayıf tezlerini paramparça etmeyi seversin.\\n\\nGörevin: Sana verilen rakip analizi manifestosunu TikTok/Shorts algoritmaları için kusursuz, kışkırtıcı bir üretim paketine çevirmek.\\n\\nÜslup Kuralları:\\n- Asla sıcak veya arkadaşça bir giriş yapma. İlk 3 saniyede izleyicinin zekasına hakaret eden veya rakibin teziyle açıkça dalga geçen şok edici bir KANCA (Hook) kur.\\n- Merhamet yok, sadece acımasız bir anti-tez ve alay var. Cümlelerin kısa, keskin ve zehir zemberek olsun.\\n- METİN KURALLARI: Senaryo doğrudan bir yapay zeka avatarına okutulacaktır. Bu yüzden metin içine ASLA [Alaycı bir gülüş], (Kameraya yaklaşır) gibi komutlar YAZMA. Sadece okunacak saf metin.\\n\\nÇIKTI FORMATI ZORUNLULUĞU (STRICT JSON):\\nSadece aşağıdaki JSON formatında cevap vereceksin. Kod bloğu dışında tek bir kelime açıklama yazma:\\n{\\n  \\\"video_hook\\\": \\\"İlk 3 saniyede rakibin tezini ezen ve şok eden kışkırtıcı başlık.\\\",\\n  \\\"teleprompter_script\\\": \\\"Hiçbir mimik/sahne komutu İÇERMEYEN, rakiple acımasızca alay eden ve anti-tezi savunan, yaklaşık 50 kelimelik zehir gibi, hook(kanca) metninden sonra gelecek konuşma metni.\\\",\\n  \\\"caption_hashtags\\\": \\\"Kışkırtıcı SEO açıklaması ve 5-6 agresif hashtag.\\\",\\n  \\\"Twitter_Postu\\\": \\\"Konuyu X'te tartışmaya açacak, rakibi dolaylı yoldan aşağılayan, manipülatif tweet (Maks. 280 karakter).\\\"\\n}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": {{ JSON.stringify($json.manifesto) }}\n    }\n  ]\n}",
         "options": {
           "response": {
             "response": {
@@ -520,99 +506,37 @@
           }
         }
       },
-      "id": "34f1af95-88d3-467e-8e47-a039c9229eca",
+      "id": "61e33702-b380-42f0-9627-a95327740a5c",
       "name": "Ajan 3: Prodüktör (GPT-4o)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4720,
-        816
+        1920,
+        288
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Agent 3 JSON çıktısını parse et, tüm final alanları topla\nconst resp = $input.first().json;\nconst raw = resp.choices?.[0]?.message?.content || '{}';\nlet parsed;\ntry {\n  parsed = JSON.parse(raw);\n} catch (e) {\n  throw new Error('Ajan 3 JSON parse hatası: ' + raw);\n}\n\nconst prev = $('Parse: Ajan 2 Manifesto').item.json;\n\nreturn [{\n  json: {\n    videoId: prev.videoId,\n    videoTitle: prev.videoTitle,\n    channelName: prev.channelName,\n    rakip_tezi: prev.rakip_tezi,\n    toplumsal_itiraz_noktasi: prev.toplumsal_itiraz_noktasi,\n    manifesto: prev.manifesto,\n    video_hook: parsed.video_hook || '',\n    teleprompter_script: parsed.teleprompter_script || '',\n    caption_hashtags: parsed.caption_hashtags || '',\n    visual_prompt: parsed.visual_prompt || ''\n  }\n}];"
+        "jsCode": "// Agent 3 JSON çıktısını parse et\nconst resp = $input.first().json;\nconst raw = resp.choices?.[0]?.message?.content || '{}';\nlet parsed;\ntry {\n  parsed = JSON.parse(raw);\n} catch (e) {\n  throw new Error('Ajan 3 JSON parse hatası: ' + raw);\n}\n\nconst prev = $('Parse: Ajan 2 Manifesto').item.json;\n\n// --- AVCI MANTIK (HUNTER LOGIC) ---\n// GPT'nin uydurabileceği anahtar isimlerini tahmin etmek yerine, içinde \"twitter\" geçenleri avlıyoruz.\nlet gelen_tweet = \"TWEET BULUNAMADI! LÜTFEN _DEBUG_RAW_PARSED ÇIKTISINA BAKIN.\";\n\nfor (const key in parsed) {\n  const k = key.toLowerCase();\n  // Eğer JSON içindeki anahtarın isminde 'twitter', 'tweet' veya 'post' geçiyorsa...\n  if (k.includes(\"twitter\") || k.includes(\"tweet\") || k === \"postu\") {\n    if(parsed[key] && typeof parsed[key] === 'string' && parsed[key].trim() !== '') {\n       gelen_tweet = parsed[key];\n       break; // Metni bulduk, aramayı durdur.\n    }\n  }\n}\n\nreturn [{\n  json: {\n    videoId: prev.videoId,\n    videoTitle: prev.videoTitle,\n    channelName: prev.channelName,\n    rakip_tezi: prev.rakip_tezi,\n    toplumsal_itiraz_noktasi: prev.toplumsal_itiraz_noktasi,\n    manifesto: prev.manifesto,\n    \n    // Klasik alanlar (GPT bunları da bozduysa diye onlara da küçük bir güvenlik ekledik)\n    video_hook: parsed.video_hook || parsed.Video_Hook || parsed.videoHook || '',\n    teleprompter_script: parsed.teleprompter_script || parsed.Teleprompter_Script || '',\n    caption_hashtags: parsed.caption_hashtags || parsed.Caption_Hashtags || '',\n    \n    // Avcı mantığın bulduğu kesin sonuç:\n    twitter_postu: gelen_tweet,\n    \n    // DEDEKTİF (DEBUG) ALANI: GPT aslında hangi çekmeceleri oluşturmuş?\n    _DEBUG_RAW_PARSED: parsed \n  }\n}];"
       },
-      "id": "756adedd-652a-4d12-9926-368aac9a94f1",
+      "id": "11d5744a-8c72-4290-8281-d80ca7e4df8e",
       "name": "Parse: Ajan 3 Üretim Paketi",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4928,
-        816
+        2128,
+        288
       ]
     },
     {
-      "parameters": {
-        "resource": "databasePage",
-        "databaseId": {
-          "__rl": true,
-          "value": "ae47436bd3d249e0b51fff48049a77a6",
-          "mode": "id"
-        },
-        "title": "={{ $json.rakip_tezi }}",
-        "propertiesUi": {
-          "propertyValues": [
-            {
-              "key": "Durum|status",
-              "statusValue": "🟢 Üretime Hazır"
-            },
-            {
-              "key": "Kategori|select",
-              "selectValue": "🔴 Rakip Casusu"
-            },
-            {
-              "key": "Video Kancası|rich_text",
-              "textContent": "={{ $json.video_hook }}"
-            },
-            {
-              "key": "Senaryo|rich_text",
-              "textContent": "={{ $json.teleprompter_script }}"
-            },
-            {
-              "key": "Açıklama|rich_text",
-              "textContent": "={{ $json.caption_hashtags }}"
-            },
-            {
-              "key": "Görsel Promptu|rich_text",
-              "textContent": "={{ $json.visual_prompt }}"
-            },
-            {
-              "key": "Source_ID|rich_text",
-              "textContent": "={{ $json.videoId }}"
-            },
-            {
-              "key": "Trend URL|url",
-              "urlValue": "=https://www.youtube.com/watch?v={{ $json.videoId }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "97dc2bb3-7595-4b2e-94b9-9c7f9ffa526c",
-      "name": "Notion: Kumanda Merkezi'ne Yaz",
-      "type": "n8n-nodes-base.notion",
-      "typeVersion": 2.2,
-      "position": [
-        5104,
-        816
-      ],
-      "credentials": {
-        "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
-        }
-      }
-    },
-    {
       "parameters": {},
-      "id": "9ff51dd4-e24e-4be7-8c7d-c213806328ce",
+      "id": "9b51930a-a2be-4801-8555-915020df8516",
       "name": "Sonraki Kanala Geç",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        5328,
-        816
+        288,
+        464
       ]
     },
     {
@@ -624,7 +548,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer OPEN_API_KEY"
+              "value": "Bearer [OPENAI_API_KEY]"
             }
           ]
         },
@@ -636,10 +560,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        4080,
-        592
+        1248,
+        288
       ],
-      "id": "26fe9783-d0f7-4864-bb50-73637e09cb7d",
+      "id": "23872354-a1c5-410d-a30d-c045fde12354",
       "name": "AI Ton Denetleyici(mini)"
     },
     {
@@ -649,10 +573,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4240,
-        592
+        1456,
+        288
       ],
-      "id": "c46a2a60-8d98-4c9b-aaa7-8dc015ea78e1",
+      "id": "6f9023c4-d250-46e9-873d-ac0ce184f4d3",
       "name": "Parse: Ton Skoru"
     },
     {
@@ -682,10 +606,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4384,
-        592
+        1648,
+        288
       ],
-      "id": "06baf55b-12b9-49e7-b222-a2c52187e660",
+      "id": "d34574b7-b577-4585-9888-a670943610af",
       "name": "IF: Ton Yeterli mi?"
     },
     {
@@ -697,7 +621,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer OPENAI_API_KEY"
+              "value": "Bearer [OPENAI_API_KEY]"
             },
             {
               "name": "Content-Type",
@@ -716,13 +640,13 @@
           }
         }
       },
-      "id": "f1e6c545-4178-47d9-b725-61f1df5c74c3",
+      "id": "ca91e58f-e8a4-4b0d-8adc-14ea973656f2",
       "name": "Ajan 2 Retry (Daha Sert)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4112,
-        816
+        1520,
+        528
       ]
     },
     {
@@ -732,10 +656,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4320,
-        816
+        1744,
+        528
       ],
-      "id": "1dbadda3-9986-4bfa-af68-344b01452b37",
+      "id": "06c56ddf-66b1-4f26-8126-957708ec235e",
       "name": "Parse: Retry Manifesto"
     },
     {
@@ -747,7 +671,7 @@
           "parameters": [
             {
               "name": "=Authorization",
-              "value": "Bearer OPENAI_API_KEY"
+              "value": "Bearer [OPENAI_API_KEY]"
             }
           ]
         },
@@ -759,10 +683,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        2624,
-        528
+        1680,
+        -176
       ],
-      "id": "00c15abc-0d57-4e98-8353-b9d135a6ac77",
+      "id": "bc8f58f4-b075-48b9-a1d0-85d7a0b9cf4b",
       "name": "Niş Filtresi (GPT-mini)"
     },
     {
@@ -772,10 +696,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2800,
-        528
+        1856,
+        -176
       ],
-      "id": "1725ef42-2f23-4068-bf7b-a49441728266",
+      "id": "b8ca0282-fecf-4da8-b126-d0e0b6edffe7",
       "name": "Parse: Niş Skoru"
     },
     {
@@ -815,26 +739,175 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3008,
-        512
+        -336,
+        240
       ],
-      "id": "c316ce23-1b65-4ee4-a8c9-7cafa474dca0",
+      "id": "64a602a9-4896-43cf-a2af-3d6e6146c73a",
       "name": "IF: Niş İçinde mi?"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "ae47436bd3d249e0b51fff48049a77a6",
+          "mode": "id"
+        },
+        "title": "={{ $json.rakip_tezi }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Durum|status",
+              "statusValue": "🟢 Üretime Hazır"
+            },
+            {
+              "key": "Kategori|select",
+              "selectValue": "🔴 Rakip Casusu"
+            },
+            {
+              "key": "Video Kancası|rich_text",
+              "textContent": "={{ $json.video_hook }}"
+            },
+            {
+              "key": "Senaryo|rich_text",
+              "textContent": "={{ $json.teleprompter_script }}"
+            },
+            {
+              "key": "Açıklama|rich_text",
+              "textContent": "={{ $json.caption_hashtags }}"
+            },
+            {
+              "key": "Twitter Postu|rich_text",
+              "textContent": "={{ $json.twitter_postu }}"
+            },
+            {
+              "key": "Source_ID|rich_text",
+              "textContent": "={{ $json.videoId }}"
+            },
+            {
+              "key": "Trend URL|url",
+              "urlValue": "=https://www.youtube.com/watch?v={{ $json.videoId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "748649b0-6484-4585-a6db-3598863eb6cd",
+      "name": "Notion: Database'e Yaz",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2064,
+        560
+      ],
+      "credentials": {
+        "notionApi": {
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4b956441-b2d2-46cf-91c1-2c309bcb05b9",
+              "leftValue": "={{ $json.durum }}",
+              "rightValue": "husran",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        912,
+        -320
+      ],
+      "id": "b64c9a7f-cd99-4be3-a38c-9432929012ea",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "try {\n  // En sondaki Notion düğümünün herhangi bir veri işleyip işlemediğini kontrol eder\n  const basariliUretim = $('Notion: Database\\'e Yaz').all();\n  \n  if (basariliUretim && basariliUretim.length > 0) {\n    return { json: { durum: \"basarili\", uretilen_video: basariliUretim.length } };\n  } else {\n    return { json: { durum: \"husran\", uretilen_video: 0 } };\n  }\n} catch (error) {\n  // Eğer Notion düğümü hiç çalışmadıysa n8n hata fırlatabilir, bu da elde var sıfır demektir.\n  return { json: { durum: \"husran\", uretilen_video: 0 } };\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        -320
+      ],
+      "id": "c90d96da-7ede-4a0b-950d-b7cecd375a7b",
+      "name": "Üretim Denetleyicisi"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "C8EPbwiOFVPeVWxs",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/C8EPbwiOFVPeVWxs",
+          "cachedResultName": "Twitter/X Scraper Skandal"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1200,
+        -352
+      ],
+      "id": "46894342-1f7f-4e82-aeb4-5a72f74e57b0",
+      "name": "Call 'Twitter/X Scraper Skandal'"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -320
+      ],
+      "id": "ede03ad8-3f9d-4cbb-8a07-97bc78b4256f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        -128
+      ],
+      "id": "bd130cab-d2a9-4ce5-a492-eb795ff5a5c4",
+      "name": "When Executed by Another Workflow"
     }
   ],
   "pinData": {},
   "connections": {
-    "Schedule Trigger (02:00)": {
-      "main": [
-        [
-          {
-            "node": "Notion: Hedef Rakipler (Aktif)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Notion: Hedef Rakipler (Aktif)": {
       "main": [
         [
@@ -859,7 +932,13 @@
     },
     "Loop Over Channels": {
       "main": [
-        [],
+        [
+          {
+            "node": "Üretim Denetleyicisi",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "YouTube: Son 24h Video Ara",
@@ -943,6 +1022,13 @@
         [
           {
             "node": "IF: Transkript Var Mi?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sonraki Kanala Geç",
             "type": "main",
             "index": 0
           }
@@ -1037,18 +1123,7 @@
       "main": [
         [
           {
-            "node": "Notion: Kumanda Merkezi'ne Yaz",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Notion: Kumanda Merkezi'ne Yaz": {
-      "main": [
-        [
-          {
-            "node": "Sonraki Kanala Geç",
+            "node": "Notion: Database'e Yaz",
             "type": "main",
             "index": 0
           }
@@ -1167,19 +1242,74 @@
           }
         ]
       ]
+    },
+    "Notion: Database'e Yaz": {
+      "main": [
+        [
+          {
+            "node": "Sonraki Kanala Geç",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Üretim Denetleyicisi": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Call 'Twitter/X Scraper Skandal'",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Notion: Hedef Rakipler (Aktif)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Notion: Hedef Rakipler (Aktif)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate",
-    "availableInMCP": false
+    "binaryMode": "separate"
   },
-  "versionId": "018fbe5d-5117-4dea-a98f-621f8e20c458",
+  "versionId": "1160d641-41e6-4ce0-a2fa-7cf456a2c069",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "bcb72e030ac62626a86fecc8ea70883c5536a33a29144b86de732ea83ce76ccf"
+    "instanceId": "5eda66af066442d74e068548e38f91fde70262b6df19f276a5301ed09e9a8ee4"
   },
-  "id": "iwBa0f21Z99K2a6xVMkTq",
+  "id": "aLXZNyrKy8DsjuqT",
   "tags": []
 }
