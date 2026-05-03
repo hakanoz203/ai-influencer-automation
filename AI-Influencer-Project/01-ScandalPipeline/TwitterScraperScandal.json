@@ -24,10 +24,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1840,
-        288
+        -672,
+        240
       ],
-      "id": "f2b55f85-e819-4ac9-83fa-2fc66d90a7d7",
+      "id": "38136704-3135-4e25-8e50-5623c1a58a74",
       "name": "Counter"
     },
     {
@@ -47,10 +47,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2080,
-        288
+        -880,
+        256
       ],
-      "id": "3d347349-c87e-4178-85e8-683ae4262935",
+      "id": "ad58ac0c-81c8-4f15-a2fe-e8d2cc924a5a",
       "name": "Set Count"
     },
     {
@@ -80,10 +80,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1088,
-        32
+        0,
+        0
       ],
-      "id": "e0a28bab-263e-4380-8fba-88f8541f1d5d",
+      "id": "6f2ddd89-a729-4b12-af83-aefb804b7608",
       "name": "If"
     },
     {
@@ -109,10 +109,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1664,
-        608
+        -496,
+        480
       ],
-      "id": "4c6fb921-0a37-43d2-bf69-ebdac66ee270",
+      "id": "31d2e7f8-71fb-4244-a846-350e12000bf3",
       "name": "Set Increase"
     },
     {
@@ -122,10 +122,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1472,
-        608
+        -320,
+        480
       ],
-      "id": "6fc69d15-6a14-4566-9679-a1eec887b263",
+      "id": "5495dc21-9dab-408d-a12b-f3081e113c5b",
       "name": "Increase Count"
     },
     {
@@ -151,10 +151,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1296,
-        608
+        -144,
+        480
       ],
-      "id": "7dbc76cc-146a-4674-941b-8a87bf2b470a",
+      "id": "8933e317-c095-4f60-af4f-9670ca098f80",
       "name": "Set Count and Cursor"
     },
     {
@@ -289,15 +289,15 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        -1312,
-        288
+        -144,
+        240
       ],
-      "id": "16884326-2f42-4f57-9d5d-bbf204cbfbce",
+      "id": "16cf25e7-da2c-4c1e-8234-e646178cb71a",
       "name": "Add to Sheet",
       "credentials": {
         "googleApi": {
-          "id": "kHq5zMYHlKKZfjyP",
-          "name": "Twitter Data Service"
+          "id": "ArqVWU3lLt2jAvdQ",
+          "name": "Twitter-Data-Service"
         }
       }
     },
@@ -308,10 +308,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1488,
-        288
+        -304,
+        240
       ],
-      "id": "1cc991db-389d-4973-b526-a6cc188661b3",
+      "id": "811d07c5-eb24-425a-bf18-2efeb840e6f1",
       "name": "Extract Info"
     },
     {
@@ -319,10 +319,10 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -1824,
-        608
+        -688,
+        480
       ],
-      "id": "f607208d-70a9-46c1-8494-681fdf398b4f",
+      "id": "3fe7a4ab-d486-442a-b4df-e3ca0e29f32f",
       "name": "Limit"
     },
     {
@@ -352,15 +352,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1664,
-        288
+        -480,
+        240
       ],
-      "id": "a8fa6e8b-4522-4dec-9757-841258ea21b5",
+      "id": "7f31d66a-799d-4c27-ba53-cf97f4f15134",
       "name": "Get Tweets",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "3XayYvEndw3FmkxR",
-          "name": "Twitter API"
+          "id": "kTPa1Svip0ZGQcYe",
+          "name": "Twitter-API"
         }
       }
     },
@@ -379,10 +379,10 @@
       "type": "n8n-nodes-base.sort",
       "typeVersion": 1,
       "position": [
-        -480,
-        592
+        432,
+        432
       ],
-      "id": "2b2e807a-fa13-4d48-a3ac-5c2be9714dc1",
+      "id": "c4418b1c-2b93-436a-af61-4ccc2a4245b7",
       "name": "Sort"
     },
     {
@@ -390,10 +390,10 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -304,
-        592
+        624,
+        432
       ],
-      "id": "c9265391-8cea-4fac-a028-4fccacf9eb10",
+      "id": "aee4790d-2d94-47fe-a92d-3cc919940f45",
       "name": "Limit1"
     },
     {
@@ -403,10 +403,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -752,
-        272
+        240,
+        208
       ],
-      "id": "e51172a4-2576-4eaa-8f50-bdc5d740dfe6",
+      "id": "b472e908-86b0-4441-b790-ab17d46a8be8",
       "name": "20x3=60"
     },
     {
@@ -416,10 +416,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -576,
-        272
+        400,
+        208
       ],
-      "id": "b14cb6d5-44bc-400a-9325-648d38367f09",
+      "id": "959b0a7d-39cb-42de-9f75-694f6e8564a1",
       "name": "60=1"
     },
     {
@@ -429,10 +429,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -656,
-        592
+        240,
+        432
       ],
-      "id": "4996ef3f-cde9-4bf4-905a-06053e75ea0a",
+      "id": "7423a403-9743-48fe-9f5e-9c5d204fe06a",
       "name": "Onaylananları Filtrele"
     },
     {
@@ -442,10 +442,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -192,
-        272
+        736,
+        208
       ],
-      "id": "2cd0917c-bd4f-4058-9ab0-faffeb3b59ab",
+      "id": "1503c4a0-776f-4e0a-b7c3-932019a43efb",
       "name": "Deduplication Gate"
     },
     {
@@ -465,15 +465,15 @@
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
       "position": [
-        -400,
-        272
+        576,
+        208
       ],
-      "id": "2f68be4e-d9c4-40d3-934f-fd242425a148",
+      "id": "4b7dd748-1fad-44f6-9235-f5e1e3fbb3cd",
       "name": "Database Kontrol",
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
     },
@@ -508,15 +508,15 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        16,
-        272
+        928,
+        208
       ],
-      "id": "24d8aa5d-eb2c-4196-941d-2d7ea5e7f223",
+      "id": "2a6d7b17-5d6c-40d8-b44c-2b02ab713c24",
       "name": "Ajan 1: Gardiyan",
       "credentials": {
         "openAiApi": {
-          "id": "QlE7EI0BcN02zeJz",
-          "name": "OpenAi account 2"
+          "id": "hjm6kkYdeJ1OtIMf",
+          "name": "OpenAI account"
         }
       }
     },
@@ -531,7 +531,7 @@
         "responses": {
           "values": [
             {
-              "content": "Sen, sosyal medyada milyonlarca izlenen, son derece gerçekçi, dehşet verici şekilde acımasız ve insanların yüzüne doğruları tokat gibi çarpan bir İlişki ve Hayat Stratejistisin. Kurban psikolojisinden nefret edersin. İzleyicinin konfor alanını bozmayı seversin, izleyici seni izlerken dehşete kapılır.\n\nGörevin: Sana verilen ilişki itirafını / aldatılma tweetini okuyup, bu konu üzerine  saniyelik, viral olacak bir TikTok/Reels/Shorts video senaryosu yazmak.\n\nÜslup Kuralları:\n\nVideoya asla \"Merhaba\" veya \"Nasılsınız\" diye başlama. İlk 3 saniyede izleyiciyi şok edecek, çok iddialı bir KANCA (Hook) cümlesi kur.\n\nKurbanı teselli etme. Eğer tweeti yazan kişi safça davranmışsa, hatalıysa veya toksik birine tahammül etmişse onu da sertçe ve olabilecek en ağır şekilde eleştir.\n\nCümlelerin kısa, net ve vurucu olsun.\n\nÇIKTI FORMATI ZORUNLULUĞU (STRICT JSON):\nSadece ve sadece aşağıdaki JSON formatında cevap vereceksin. Başka hiçbir açıklama yazma:\n{\n\"kanca\": \"Videonun ilk 3 saniyesindeki o şok edici başlık/cümle.\",\n\"senaryo\": \"Videonun yaklaşık 50 kelimelik, Hook(kanca) kısmından sonraki vurucu konuşma metni.\",\n\"aciklama\": \"TikTok/Reels için SEO uyumlu açıklama metni ve 5-6 etkili hashtag.\",\n\"twitter_postu\": \"Kurban psikolojisini ve bu olayı X'te (Twitter) linçletecek, kışkırtıcı, tartışma yaratacak acımasız tweet metni (Maksimum 280 karakter).\"\n}"
+              "content": "Sen, sosyal medyada milyonlarca izlenen, son derece gerçekçi, dehşet verici şekilde acımasız ve insanların yüzüne doğruları tokat gibi çarpan bir İlişki ve Hayat Stratejistisin. Kurban psikolojisinden nefret edersin. İzleyicinin konfor alanını bozmayı seversin, izleyici seni izlerken dehşete kapılır.\n\nGörevin: Sana verilen ilişki itirafını / aldatılma tweetini okuyup, bu konu üzerine  saniyelik, viral olacak bir TikTok/Reels/Shorts video senaryosu yazmak.\n\nÜslup Kuralları:\n\nVideoya asla \"Merhaba\" veya \"Nasılsınız\" diye başlama. İlk 3 saniyede izleyiciyi şok edecek, çok iddialı bir KANCA (Hook) cümlesi kur.\n\nKurbanı teselli etme. Eğer tweeti yazan kişi safça davranmışsa, hatalıysa veya toksik birine tahammül etmişse onu da sertçe ve olabilecek en ağır şekilde eleştir.\n\nCümlelerin kısa, net ve vurucu olsun.\n\nÇIKTI FORMATI ZORUNLULUĞU (STRICT JSON):\nSadece ve sadece aşağıdaki JSON formatında cevap vereceksin. JSON anahtar kelimelerinde (keys) KESİNLİKLE Türkçe karakter kullanma. Anahtarlar tam olarak şu şekilde olmalıdır, Başka hiçbir açıklama yazma:\n{\n\"kanca\": \"Videonun ilk 3 saniyesindeki o şok edici başlık/cümle.\",\n\"senaryo\": \"Videonun yaklaşık 50 kelimelik, Hook(kanca) kısmından sonraki vurucu konuşma metni.\",\n\"aciklama\": \"TikTok/Reels için SEO uyumlu açıklama metni ve 5-6 etkili hashtag.\",\n\"twitter_postu\": \"Kurban psikolojisini ve bu olayı X'te (Twitter) linçletecek, kışkırtıcı, tartışma yaratacak acımasız tweet metni (Maksimum 280 karakter).\"\n}"
             },
             {
               "role": "system",
@@ -545,15 +545,15 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        -96,
-        592
+        784,
+        432
       ],
-      "id": "e3ab6473-844c-48d1-a64b-aeac662703e5",
+      "id": "23d77c61-3064-499a-ba20-c0d7911be717",
       "name": "Ajan: Persona Modeli",
       "credentials": {
         "openAiApi": {
-          "id": "QlE7EI0BcN02zeJz",
-          "name": "OpenAi account 2"
+          "id": "hjm6kkYdeJ1OtIMf",
+          "name": "OpenAI account"
         }
       }
     },
@@ -564,10 +564,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        240,
-        592
+        1072,
+        432
       ],
-      "id": "2c4c61c0-243f-47a1-ac48-97e351379e08",
+      "id": "02e2cd19-d789-4664-ad34-74cd956a0910",
       "name": "Son Paketleme"
     },
     {
@@ -614,15 +614,15 @@
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
       "position": [
-        448,
-        592
+        1232,
+        432
       ],
-      "id": "c7d3d621-2862-4c97-b954-82ce1eb53f70",
+      "id": "506b8031-5a4d-4311-b9b9-dddaa407daee",
       "name": "Veritabanına At",
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
     },
@@ -631,11 +631,24 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -2384,
-        272
+        -1088,
+        160
       ],
-      "id": "69bce44b-0bd1-4966-8686-58e3a99fc646",
+      "id": "7a2b5bdc-2bf4-4059-bfaf-59bdd79a07f8",
       "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1088,
+        304
+      ],
+      "id": "e97ff6e1-3589-49cd-9748-0fd700456f7c",
+      "name": "When Executed by Another Workflow"
     }
   ],
   "pinData": {},
@@ -877,19 +890,29 @@
           }
         ]
       ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Set Count",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate",
-    "availableInMCP": false
+    "binaryMode": "separate"
   },
-  "versionId": "09d6c867-2769-4552-8a18-5c12d2c5b765",
+  "versionId": "2fab6327-21f6-4715-a5c6-ab656fc862ba",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "bcb72e030ac62626a86fecc8ea70883c5536a33a29144b86de732ea83ce76ccf"
+    "instanceId": "5eda66af066442d74e068548e38f91fde70262b6df19f276a5301ed09e9a8ee4"
   },
-  "id": "-gQTmmnTg1Uss42VQyglm",
+  "id": "C8EPbwiOFVPeVWxs",
   "tags": []
 }
