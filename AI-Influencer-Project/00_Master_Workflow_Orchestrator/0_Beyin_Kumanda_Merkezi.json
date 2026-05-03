@@ -1,0 +1,285 @@
+{
+  "name": "0-Beyin-Kumanda-Merkezi",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        128,
+        64
+      ],
+      "id": "7e2697b4-ac66-4c7c-bb8c-d1d6c91cde7a",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "//haftanın günleri: 0(Pazar), 1(Pzt), 2(Salı), 3(Çarş), 4(Perş), 5(Cuma), 6(Cmt)\nconst gun = new Date().getDay(); \n\n// Hedef: Pzt(1), Çarş(3), Cuma(5), Pazar(0) -> Skandal\nconst skandalGunleri = [0, 1, 3, 5];\n\nif (skandalGunleri.includes(gun)) {\n  return { json: { rota: \"skandal\" } };\n} else {\n  return { json: { rota: \"rakip\" } }; // Salı, Perşembe, Cumartesi\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        352,
+        144
+      ],
+      "id": "373c0ec1-54fb-47d6-bda3-ae79e1353adc",
+      "name": "Rota Belirleyici"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        128,
+        224
+      ],
+      "id": "f582eb51-79b2-4324-b68d-6405e3968535",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.rota }}",
+                    "rightValue": "rakip",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "341291a7-d231-4d02-9542-cfcfaf6309d8"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "43d84e7e-b765-40f3-b85f-dca66a76fb11",
+                    "leftValue": "={{ $json.rota }}",
+                    "rightValue": "skandal",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        144
+      ],
+      "id": "dce0bb4d-eedd-4e0d-8c13-3e26830e4f2a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "aLXZNyrKy8DsjuqT",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/aLXZNyrKy8DsjuqT",
+          "cachedResultName": "5.Competitor Spy & Anti-Thesis"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        768,
+        0
+      ],
+      "id": "5d031aef-12c6-4d79-9240-eedb18a2b851",
+      "name": "Call '5.Competitor Spy & Anti-Thesis'",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "C8EPbwiOFVPeVWxs",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/C8EPbwiOFVPeVWxs",
+          "cachedResultName": "Twitter/X Scraper Skandal"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        768,
+        240
+      ],
+      "id": "52274b5f-4c3a-48df-80f9-7ae605bb1968",
+      "name": "Call 'Twitter/X Scraper Skandal'",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "fbIPfvjneV6wyjO2",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/fbIPfvjneV6wyjO2",
+          "cachedResultName": "Evergreen Lore - Makro Felsefe"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        992,
+        112
+      ],
+      "id": "0a42dabc-38c7-4b32-b201-5c896687eed4",
+      "name": "Call 'Evergreen Lore - Makro Felsefe'"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Rota Belirleyici",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rota Belirleyici": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Rota Belirleyici",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Call '5.Competitor Spy & Anti-Thesis'",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 'Twitter/X Scraper Skandal'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '5.Competitor Spy & Anti-Thesis'": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Call 'Evergreen Lore - Makro Felsefe'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Twitter/X Scraper Skandal'": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Call 'Evergreen Lore - Makro Felsefe'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "da13522f-690c-486e-988b-d1d9a14580e7",
+  "meta": {
+    "instanceId": "5eda66af066442d74e068548e38f91fde70262b6df19f276a5301ed09e9a8ee4"
+  },
+  "id": "APjwILoIfGk0pOcB",
+  "tags": []
+}
