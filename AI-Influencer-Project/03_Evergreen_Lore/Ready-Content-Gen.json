@@ -1,26 +1,15 @@
 {
-  "name": "Evergreen Lore - Makro Felsefe & Astroloji",
+  "name": "Evergreen Lore - Makro Felsefe",
   "nodes": [
     {
       "parameters": {},
-      "id": "f695e7c2-0af9-4264-9b8d-817cca7b8f45",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        4704,
-        848
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "e36c6ca8-a891-426d-8c8b-09a847087979",
+      "id": "191f107d-188d-4951-a244-1b3b861d8925",
       "name": "Manual Trigger (Test)",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        4704,
-        1040
+        0,
+        192
       ]
     },
     {
@@ -44,30 +33,30 @@
         },
         "options": {}
       },
-      "id": "16d5be66-55f2-4da7-a2ad-890158b65649",
+      "id": "4fd7e970-8bd7-423d-8040-38e6b1f51090",
       "name": "Notion - Get Topics",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2,
       "position": [
-        4944,
-        928
+        240,
+        80
       ],
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
     },
     {
       "parameters": {},
-      "id": "b6de8b8d-b9b9-40c5-b77e-cc1f669998e6",
+      "id": "c5163055-1c7c-4e41-84f9-788321401704",
       "name": "Limit to 1",
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        5168,
-        928
+        464,
+        80
       ]
     },
     {
@@ -96,26 +85,26 @@
         },
         "options": {}
       },
-      "id": "54ad300b-0093-4ffa-a954-15c62019e2fa",
+      "id": "2f3f0a6b-c2ac-405b-b0c1-4ccdcda7c7df",
       "name": "Set - Extract Concept",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5392,
-        928
+        688,
+        80
       ]
     },
     {
       "parameters": {
         "jsCode": "const raw = $input.first().json.message?.content ?? $input.first().json.content ?? $input.first().json;\nconst parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;\nreturn [{ json: parsed }];"
       },
-      "id": "112ccbce-f7e4-4911-9a3b-fbc7c4a72f0a",
+      "id": "f9a9362e-78de-4a3a-b87c-624bff75c093",
       "name": "Parse Agent 1 JSON",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5888,
-        928
+        1184,
+        80
       ]
     },
     {
@@ -128,7 +117,7 @@
         "messages": {
           "values": [
             {
-              "content": "Sen 30'lu yaşlarda, zeki, otoriter ve acımasız bir ilişki mentörüsün. Astroloji, dişil enerji veya ucuz felsefeleri bahane ederek kendi hayatının sorumluluğunu almayanlardan nefret edersin.\n\nKURALLAR:\n1) Sadece Verilen konsepti (örn. Merkür Retrosu) bir tuzak olarak kullanıp konuya gir.\n2) İnsanların bu kavrama sığınarak kendi toksik seçimlerini aklamalarını tokat gibi yüzlerine vur.\n3) Kurban psikolojisini reddet ve soğuk duş etkisi yaratan bir manifesto yaz.\n\nSadece ham manifesto metnini döndür. JSON veya markdown kullanma.",
+              "content": "Sen 30'lu yaşlarda, zeki, otoriter ve acımasız bir ilişki mentörüsün. Astroloji, dişil enerji veya ucuz felsefeleri bahane ederek kendi hayatının sorumluluğunu almayanlardan nefret edersin.\n\nKURALLAR:\n1) Sadece Verilen konsepti (örn. Hipergami) bir tuzak olarak kullanıp konuya gir.\n2) İnsanların bu kavrama sığınarak kendi toksik seçimlerini aklamalarını tokat gibi yüzlerine vur.\n3) Kurban psikolojisini reddederek soğuk duş etkisi yaratan bir manifesto yaz.\n\nSadece ham manifesto metnini döndür. JSON veya markdown kullanma.",
               "role": "system"
             },
             {
@@ -140,18 +129,18 @@
           "temperature": 0.85
         }
       },
-      "id": "bcafb05c-9c51-4e19-90cb-d0387f4bef7f",
+      "id": "544bddbe-a6c8-4f2b-8a6f-c1dc55a943db",
       "name": "Agent 2 - Persona Engine",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        4912,
-        1232
+        208,
+        384
       ],
       "credentials": {
         "openAiApi": {
-          "id": "QlE7EI0BcN02zeJz",
-          "name": "OpenAi account 2"
+          "id": "hjm6kkYdeJ1OtIMf",
+          "name": "OpenAI account"
         }
       }
     },
@@ -165,7 +154,7 @@
         "messages": {
           "values": [
             {
-              "content": "Sana verilen manifestoyu TikTok/Shorts algoritmaları için kusursuz bir üretim paketine çevir.\n\nSTRICT JSON ver:\n{\n  \"video_hook\": \"İlk 3 saniye vurucu başlık\",\n  \"teleprompter_script\": \"Kamera ve mimik komutları içeren akıcı senaryo\",\n  \"caption_hashtags\": \"Açıklama ve hashtagler\",\n  \"visual_prompt\": \"Midjourney/Flux görsel üretim promptu\"\n}",
+              "content": "Sen, insan doğasının karanlık ve değişmez yasalarını deşifre eden, yüzyıllardır değişmeyen acımasız gerçekleri insanların yüzüne vuran bir \"Kadim Stratejist\"sin. Modern dünyanın \"pozitif düşünce\" safsatalarından nefret edersin. Üslubun soğuk, otoriter ve sarsıcıdır.\n\nGörevin: Sana verilen kadim felsefeyi veya zamansız hayat dersini (Evergreen Lore), TikTok/Reels algoritmalarına uygun bir üretim paketine çevirmek.\n\nÜslup Kuralları:\n- Videoya asla selam vererek başlama. İlk 3 saniyede insanın beynine kazınacak bir KANCA (Hook) kur.\n- Teselli etme, analiz et. Cümlelerin kısa, sert ve \"evrensel bir yasa\" gibi duyulsun.\n- İnsanın konfor alanını değil, temel inançlarını sars.\n- METİN KURALLARI: Senaryo doğrudan bir yapay zeka avatarına (HeyGen) okutulacaktır. Bu yüzden metin içine ASLA [Kameraya bak], (Gülümser), [Sahne değişir] gibi kamera, sahne veya mimik komutları YAZMA. Avatarın sesli okumaması gereken hiçbir kelimeyi senaryoya dahil etme.\n\nÇIKTI FORMATI ZORUNLULUĞU (STRICT JSON):\nSadece aşağıdaki JSON formatında cevap vereceksin:\n{\n  \"video_hook\": \"Videonun ilk 3 saniyesindeki şok edici başlık.\",\n  \"teleprompter_script\": \"Hiçbir kamera, sahne veya mimik komutu İÇERMEYEN, doğrudan okunacak yaklaşık 50 kelimelik saf konuşma metni.\",\n  \"caption_hashtags\": \"SEO uyumlu video açıklaması ve 5-6 etkili hashtag.\",\n  \"twitter_postu\": \"Bu zamansız gerçeği X'te (Twitter) tartışma çıkartacak, kışkırtıcı ve manipülatif bir dille anlatan tweet (Maksimum 280 karakter).\"\n}",
               "role": "system"
             },
             {
@@ -178,32 +167,32 @@
           "temperature": 0.7
         }
       },
-      "id": "fab98212-02d2-4a45-a0d5-11e1a5a77886",
+      "id": "b61dfae9-c29f-46e7-9205-c44564e7679c",
       "name": "Agent 3 - Producer",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        5232,
-        1232
+        528,
+        384
       ],
       "credentials": {
         "openAiApi": {
-          "id": "QlE7EI0BcN02zeJz",
-          "name": "OpenAi account 2"
+          "id": "hjm6kkYdeJ1OtIMf",
+          "name": "OpenAI account"
         }
       }
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.message?.content ?? $input.first().json.content ?? $input.first().json;\nconst parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;\nreturn [{ json: parsed }];"
+        "jsCode": "const inputJson = $input.first().json;\nlet rawText = inputJson.message?.content ?? inputJson.content ?? inputJson.output ?? inputJson;\nlet parsedData = {};\n\n// 1. Zırh: Markdown Temizliği ve Güvenli Parse\nif (typeof rawText === 'object') {\n    parsedData = rawText;\n} else {\n    try {\n        // GPT'nin sokuşturduğu ```json ve ``` takılarını acımasızca temizle\n        let cleanText = rawText.replace(/```json/gi, '').replace(/```/gi, '').trim();\n        parsedData = JSON.parse(cleanText);\n    } catch (e) {\n        throw new Error(\"KRİTİK HATA: GPT çıktısı JSON'a dönüştürülemedi. Ham Çıktı: \" + rawText);\n    }\n}\n\n// 2. Zırh: Twitter Avcısı (Hunter Logic)\nlet gelen_tweet = \"\";\nfor (const key in parsedData) {\n  const k = key.toLowerCase();\n  if (k.includes(\"twitter\") || k.includes(\"tweet\") || k.includes(\"x_post\") || k === \"postu\") {\n    if(parsedData[key] && typeof parsedData[key] === 'string' && parsedData[key].trim() !== '') {\n       gelen_tweet = parsedData[key];\n       break; \n    }\n  }\n}\ngelen_tweet = gelen_tweet || parsedData.twitter_postu || \"HATA: Twitter içeriği üretilemedi.\";\n\n// 3. Zırh: Standart Çıktı Garantisi (Undefined Engelleme)\nreturn [{\n    json: {\n        // Notion/Veritabanı için garantilenmiş, hata vermeyecek standart değişkenler\n        video_hook: parsedData.video_hook || parsedData.Video_Hook || parsedData.kanca || \"HATA: Kanca Bulunamadı\",\n        teleprompter_script: parsedData.teleprompter_script || parsedData.senaryo || \"HATA: Script Bulunamadı\",\n        caption_hashtags: parsedData.caption_hashtags || parsedData.aciklama || \"\",\n        twitter_postu: gelen_tweet,\n        \n        // Sistemin ne ürettiğini n8n panelinde görmek için dedektif değişkeni\n        _debug_raw: parsedData \n    }\n}];"
       },
-      "id": "1640c570-8a85-4406-8fac-a9cc4e23cb33",
+      "id": "87a0f628-bbb6-4c20-8edf-a65fa2b8aa76",
       "name": "Parse Agent 3 JSON",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5552,
-        1232
+        848,
+        384
       ]
     },
     {
@@ -229,18 +218,18 @@
           "temperature": 0.7
         }
       },
-      "id": "6e8ef8fc-144b-42c8-af7f-610d78cea4b9",
+      "id": "813f0f10-c6ba-4f4f-8c23-21d3f1685059",
       "name": "Agent 1 - Konsept Genişletici",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        5568,
-        928
+        864,
+        80
       ],
       "credentials": {
         "openAiApi": {
-          "id": "QlE7EI0BcN02zeJz",
-          "name": "OpenAi account 2"
+          "id": "hjm6kkYdeJ1OtIMf",
+          "name": "OpenAI account"
         }
       }
     },
@@ -265,18 +254,18 @@
         },
         "options": {}
       },
-      "id": "cf6aabf3-f1d2-4be2-a9bc-f4308ff86dfc",
+      "id": "5fd66d90-c450-454d-94bd-b304121d6dc7",
       "name": "Notion - Kullanıldı İşaretle",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2,
       "position": [
-        5984,
-        1232
+        1280,
+        384
       ],
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
     },
@@ -314,8 +303,8 @@
               "textContent": "={{ $json.caption_hashtags }}"
             },
             {
-              "key": "Görsel Promptu|rich_text",
-              "textContent": "={{ $json.visual_prompt }}"
+              "key": "Twitter Postu|rich_text",
+              "textContent": "={{ $json._debug_raw.twitter_postu }}"
             },
             {
               "key": "Source_ID|rich_text",
@@ -325,35 +314,37 @@
         },
         "options": {}
       },
-      "id": "fabb8db6-6e5f-4a81-9aec-49e4a1ca3482",
+      "id": "a6e96ab3-5420-4902-9bc6-6ad339bb1599",
       "name": "Notion - Kumanda Merk. girdisi üret",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2,
       "position": [
-        5776,
-        1232
+        1072,
+        384
       ],
       "credentials": {
         "notionApi": {
-          "id": "ZVmMHFlTCVOLYDqO",
-          "name": "Notion account"
+          "id": "knjhXMXPrU5WARtt",
+          "name": "Notion-Ai-Influencer"
         }
       }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        32
+      ],
+      "id": "863171cc-791d-4ad7-9e34-cadba505359e",
+      "name": "When Executed by Another Workflow"
     }
   ],
   "pinData": {},
   "connections": {
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Notion - Get Topics",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Manual Trigger (Test)": {
       "main": [
         [
@@ -463,19 +454,29 @@
           }
         ]
       ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Notion - Get Topics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
-    "binaryMode": "separate",
-    "availableInMCP": false
+    "binaryMode": "separate"
   },
-  "versionId": "c76186f2-4a0a-4582-a6a5-c8eee9e91d9b",
+  "versionId": "2e84a99e-123e-4d9d-9b4d-0ba76aeb32d5",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "bcb72e030ac62626a86fecc8ea70883c5536a33a29144b86de732ea83ce76ccf"
+    "instanceId": "5eda66af066442d74e068548e38f91fde70262b6df19f276a5301ed09e9a8ee4"
   },
-  "id": "7WMswFEZQfzizOsC486AQ",
+  "id": "fbIPfvjneV6wyjO2",
   "tags": []
 }
