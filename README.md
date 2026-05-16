@@ -1,6 +1,7 @@
 # Autonomous AI Influencer Ecosystem: Project "Selinger"
 Instagram: @sselinerr_
 Twitter/X: @sselingerr
+Instagram Account Link: https://www.instagram.com/sselingerr_/
 Digital Product link: https://whop.com/selinger-akademi-edc3/goruldu-atilmadi-terk-edildin
 
 ##  Executive Summary
