@@ -2,7 +2,7 @@
 Instagram: @sselinerr_
 Twitter/X: @sselingerr
 Instagram Account Link: https://www.instagram.com/sselingerr_/
-Digital Product link: https://whop.com/selinger-akademi-edc3/goruldu-atilmadi-terk-edildin
+        Digital Product link: https://whop.com/selinger-akademi-edc3/goruldu-atilmadi-terk-edildin
 
 ##  Executive Summary
 Project "Selinger" is a fully autonomous, almost zero-touch content generation and social media marketing ecosystem. It is designed to operate as a self-sustaining digital entity: a sarcastic, brutally honest relationship analyst. 
